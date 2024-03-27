@@ -1,10 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
 }
 
 html {
-  background: #1e1a20;
+  background: #dfe0df;
+  font-family: "Poppins", sans-serif;
 }
 
 .webgl {
@@ -19,12 +22,28 @@ html {
   align-items: center;
   height: 100vh;
   position: relative;
-  font-family: "Cabin", sans-serif;
-  color: #ffeded;
-  text-transform: uppercase;
-  font-size: 7vmin;
   padding-left: 10%;
   padding-right: 10%;
+}
+
+h1,
+h2 {
+  color: #292328;
+  font-size: 16vmin;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  line-height: 0.9;
+  position: relative;
+}
+
+h1 span,
+h2 span {
+  -webkit-text-stroke: 0.7px #292328;
+  -webkit-text-fill-color: transparent;
+  position: absolute;
+  top: 2px;
+  left: -3px;
+  z-index: -1;
 }
 
 section:nth-child(odd) {

@@ -1,19 +1,8 @@
 import * as THREE from "three";
-import GUI from "lil-gui";
-
-/**
- * Debug
- */
-const gui = new GUI();
 
 const parameters = {
-  materialColor: "#ffeded",
+  materialColor: "#261723",
 };
-
-gui.addColor(parameters, "materialColor").onChange(() => {
-  material.color.set(parameters.materialColor);
-  particlesMaterial.color.set(parameters.materialColor);
-});
 
 /**
  * Base
@@ -24,11 +13,6 @@ const canvas = document.querySelector("canvas.webgl");
 // Scene
 const scene = new THREE.Scene();
 
-// Texture
-const textureLoader = new THREE.TextureLoader();
-const gradientTexture = textureLoader.load("textures/gradients/3.jpg");
-gradientTexture.magFilter = THREE.NearestFilter;
-
 /**
  * Objects
  */
@@ -36,14 +20,14 @@ gradientTexture.magFilter = THREE.NearestFilter;
 // Material
 const material = new THREE.MeshToonMaterial({
   color: parameters.materialColor,
-  gradientMap: gradientTexture,
+  wireframe: true
 });
 
 // Meshes
 const mesh1 = new THREE.Mesh(new THREE.TorusGeometry(1, 0.4, 16, 60), material);
 const mesh2 = new THREE.Mesh(new THREE.ConeGeometry(1, 2, 32), material);
 const mesh3 = new THREE.Mesh(
-  new THREE.TorusKnotGeometry(0.8, 0.35, 100, 16),
+  new THREE.TorusKnotGeometry(0.8, 0.3, 100, 16),
   material
 );
 
@@ -65,7 +49,7 @@ const sectionMeshes = [mesh1, mesh2, mesh3];
  * Particles
  */
 // Geometry
-const particlesCount = 200;
+const particlesCount = 600;
 const positions = new Float32Array(particlesCount * 3);
 
 for (let i = 0; i < particlesCount; i++) {
@@ -84,7 +68,7 @@ particlesGeometry.setAttribute(
 
 // Material
 const particlesMaterial = new THREE.PointsMaterial({
-  color: parameters.materialColor,
+  color: "#261723",
   sizeAttenuation: true,
   size: 0.03,
 });
